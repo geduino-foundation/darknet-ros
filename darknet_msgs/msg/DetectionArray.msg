@@ -1,4 +1,4 @@
-# Detection.msg
+# DetectionArray.msg
 #
 # Copyright (C) 2018 Alessandro Francescon
 #
@@ -14,11 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-# The detection class
-darknet_cv/DetectionClass detectionClass
+# The header
+Header header
 
-# The detection probability
-float64 probability
-
-# The ROI on image where class was detected
-sensor_msgs/RegionOfInterest roi
+# The detection
+darknet_msgs/Detection[] detections

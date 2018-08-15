@@ -101,7 +101,7 @@ int YoloDetector::init() {
     imageSubscriber = imageTransport.subscribe("image", 1, & YoloDetector::imageCallback, this);
 
     // Create detection array publisher
-    detectionArrayPublisher = nodeHandle.advertise<darknet_cv::DetectionArray>("detections", 5);
+    detectionArrayPublisher = nodeHandle.advertise<darknet_msgs::DetectionArray>("detections", 5);
 
     // Create debug image publisher
     debugImagePublisher = imageTransport.advertise("image_debug", 1);
@@ -144,7 +144,7 @@ void YoloDetector::imageCallback(const sensor_msgs::ImageConstPtr & imageConstPt
         }
 
         // Prepare detection results
-        darknet_cv::DetectionArray detectionArrayMsg;
+        darknet_msgs::DetectionArray detectionArrayMsg;
 
         // Use same header from image message
         detectionArrayMsg.header = imageConstPtr->header;
@@ -206,7 +206,7 @@ void YoloDetector::imageCallback(const sensor_msgs::ImageConstPtr & imageConstPt
 
 }
 
-void YoloDetector::publishDebugImage(const sensor_msgs::ImageConstPtr & imageConstPtr, const darknet_cv::DetectionArray & detectionArrayMsg) {
+void YoloDetector::publishDebugImage(const sensor_msgs::ImageConstPtr & imageConstPtr, const darknet_msgs::DetectionArray & detectionArrayMsg) {
 
     cv_bridge::CvImagePtr cvImagePtr;
 

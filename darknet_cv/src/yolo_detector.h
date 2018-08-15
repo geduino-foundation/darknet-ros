@@ -23,7 +23,7 @@
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/Image.h>
 #include <opencv2/core/core.hpp>
-#include <darknet_cv/DetectionArray.h>
+#include <darknet_msgs/DetectionArray.h>
 
 extern "C" {
     #include "darknet/include/darknet.h"
@@ -41,7 +41,7 @@ private:
 
     void imageCallback(const sensor_msgs::ImageConstPtr & imageConstPtr);
 
-    void publishDebugImage(const sensor_msgs::ImageConstPtr & imageConstPtr, const darknet_cv::DetectionArray & detectionArrayMsg);
+    void publishDebugImage(const sensor_msgs::ImageConstPtr & imageConstPtr, const darknet_msgs::DetectionArray & detectionArrayMsg);
 
     ros::NodeHandle nodeHandle;
     ros::NodeHandle privateNodeHandle;

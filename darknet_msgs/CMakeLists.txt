@@ -1,4 +1,4 @@
-# darknet_cv/CMakeList.txt
+# darknet_msgs/CMakeList.txt
 #
 # Copyright (C) 2018 Alessandro Francescon
 # 
@@ -16,33 +16,27 @@
 
 cmake_minimum_required(VERSION 2.8.3)
 
-project(darknet_cv)
-
+project(darknet_msgs)
 
 find_package(catkin REQUIRED COMPONENTS
-    roscpp
-    cv_bridge
-    image_transport
-    darknet_msgs
-    darknet
+	sensor_msgs
+	message_generation
+)
+
+add_message_files(
+	FILES
+	DetectionClass.msg
+	Detection.msg
+	DetectionArray.msg
+)
+
+generate_messages(
+	DEPENDENCIES
+	sensor_msgs
 )
 
 catkin_package(
-  INCLUDE_DIRS src
-  LIBRARIES ${PROJECT_NAME}
-  DEPENDS roscpp
-)
-
-message(${catkin_INCLUDE_DIRS})
-
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-  src
-)
-
-add_executable(yolo_detector_node src/yolo_detector_node.cpp src/yolo_detector.cpp)
-add_dependencies(yolo_detector_node ${catkin_EXPORTED_TARGETS})
-
-target_link_libraries(yolo_detector_node
-        ${catkin_LIBRARIES}
+	CATKIN_DEPENDS
+	message_runtime
+	sensor_msgs
 )
