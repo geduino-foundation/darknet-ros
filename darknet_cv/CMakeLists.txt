@@ -43,6 +43,13 @@ include_directories(
 add_executable(yolo_detector_node src/yolo_detector_node.cpp src/yolo_detector.cpp)
 add_dependencies(yolo_detector_node ${catkin_EXPORTED_TARGETS})
 
+add_library(yolo_detector_nodelet src/yolo_detector_nodelet.cpp src/yolo_detector.cpp)
+add_dependencies(yolo_detector_nodelet ${catkin_EXPORTED_TARGETS})
+
 target_link_libraries(yolo_detector_node
+        ${catkin_LIBRARIES}
+)
+
+target_link_libraries(yolo_detector_nodelet
         ${catkin_LIBRARIES}
 )

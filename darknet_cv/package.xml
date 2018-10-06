@@ -36,14 +36,17 @@
   <build_depend>cv_bridge</build_depend>
   <build_depend>image_transport</build_depend>
   <build_depend>darknet_msgs</build_depend>
+  <build_depend>nodelet</build_depend>
 
   <run_depend>roscpp</run_depend>
   <run_depend>darknet</run_depend>
   <run_depend>cv_bridge</run_depend>
   <run_depend>image_transport</run_depend>
   <run_depend>darknet_msgs</run_depend>
+  <run_depend>nodelet</run_depend>
 
   <export>
+    <nodelet plugin="${prefix}/yolo_detector_nodelet.xml"/>
   </export>
 
 </package>
